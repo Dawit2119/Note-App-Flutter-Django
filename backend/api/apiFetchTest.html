@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>check the api</title>
+</head>
+<body>
+    <h2>All Notes</h2>
+    <div id="all-notes">
+
+    </div>
+</body>
+<script>
+    let allNotes = async()=>{
+        let allnotes = await fetch('http://localhost:8000/api/notes')
+        let jsonifiednotes = await allnotes.json()
+        for(let i = 0;i<jsonifiednotes.length;i++){
+            document.getElementById('all-notes').innerHTML+=jsonifiednotes[i].body+"<br>"
+        }
+    }
+    allNotes()
+</script>
+</html>
